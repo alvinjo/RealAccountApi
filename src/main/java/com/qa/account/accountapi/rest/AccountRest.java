@@ -35,7 +35,6 @@ public class AccountRest {
     @Value("${path.determinePrize}")
     private String determinePrizePath;
 
-
     @GetMapping(Constants.URL_GET_ACCOUNTS)
     public List<Account> getAccounts() {
         return service.getAccounts();
@@ -47,8 +46,8 @@ public class AccountRest {
     }
 
     @DeleteMapping(Constants.URL_DELETE_ACCOUNT)
-    public void deleteAccount(@PathVariable Long id) {
-        service.deleteAccount(id);
+    public ResponseEntity<Object> deleteAccount(@PathVariable Long id) {
+        return service.deleteAccount(id);
     }
 
     @PutMapping(Constants.URL_UPDATE_ACCOUNT)

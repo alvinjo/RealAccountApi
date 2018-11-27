@@ -45,11 +45,30 @@ public class AccountServiceImpl implements AccountService {
     public ResponseEntity<Object> updateAccount(Account account, Long id) {
         if(accountExists(id)){
             account.setId(id);
+//            updateAccountAttributes(account,id);
             repo.save(account);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
     }
+
+//    private Account updateAccountAttributes(Account updatedAccount, Long id){
+//        Account accountInDb = repo.findById(id).get();
+//        boolean firstNameHasBeenUpdated = checkIfUpdated(updatedAccount.getFirstName());
+//        boolean lastNameHasBeenUpdated = checkIfUpdated(updatedAccount.getLastName());
+//
+//        if(firstNameHasBeenUpdated){
+//            accountInDb.setFirstName(updatedAccount.getFirstName());
+//        }
+//        if(lastNameHasBeenUpdated){
+//            accountInDb.setLastName(updatedAccount.getLastName());
+//        }
+//        return accountInDb;
+//    }
+//
+//    private <T> boolean checkIfUpdated(T information){
+//        return information != null;
+//    }
 
 
     private boolean accountExists(Long id){
