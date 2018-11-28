@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping(Constants.URL_BASE)
 @RestController
 public class AccountRest {
