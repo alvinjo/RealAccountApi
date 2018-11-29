@@ -1,7 +1,9 @@
 package com.qa.account.accountapi.service;
 
-import com.qa.account.accountapi.persistence.domain.Account;
 import org.springframework.http.ResponseEntity;
+
+import com.qa.account.persistence.domain.Account;
+
 import java.util.List;
 
 public interface AccountService {

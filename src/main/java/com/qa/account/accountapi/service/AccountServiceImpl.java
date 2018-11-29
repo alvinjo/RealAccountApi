@@ -1,8 +1,9 @@
 package com.qa.account.accountapi.service;
 
-import com.qa.account.accountapi.persistence.domain.Account;
 import com.qa.account.accountapi.persistence.repository.AccountRepository;
 import com.qa.account.accountapi.util.exceptions.AccountNotFoundException;
+import com.qa.account.persistence.domain.Account;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

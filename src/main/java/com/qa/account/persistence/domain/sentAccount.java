@@ -1,36 +1,34 @@
-package com.qa.account.accountapi.persistence.domain;
+package com.qa.account.persistence.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class Account {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class sentAccount {
+	
+    private Long accountId;
 
     private String firstName;
 
     private String lastName;
 
     private String accountNumber;
+    
+    private sentPrize prize;
 
-    public Account() {
+    public sentAccount() {
     }
 
-    public Account(String firstName, String lastName, String accountNumber) {
+    public sentAccount(Long accountId, String firstName, String lastName, String accountNumber, sentPrize prize) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
+        this.accountId = accountId;
+        this.prize = prize;
     }
 
     public Long getId() {
-        return id;
+        return accountId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.accountId = id;
     }
 
     public String getFirstName() {
@@ -55,5 +53,13 @@ public class Account {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
+    }
+    
+    public sentPrize getPrize() {
+    	return prize;
+    }
+    
+    public void setPrize(sentPrize prize) {
+    	this.prize = prize;
     }
 }
