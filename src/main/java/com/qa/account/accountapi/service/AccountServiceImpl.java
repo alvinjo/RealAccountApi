@@ -6,6 +6,7 @@ import com.qa.account.persistence.domain.Account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountRepository repo;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     @Override
     public List<Account> getAccounts() {
@@ -30,6 +34,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account addAccount(Account account) {
+        jmsTemplate.convertAndSend("AccountQueue", account);
         return repo.save(account);
     }
 
@@ -44,7 +49,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public ResponseEntity<Object> updateAccount(Account account, Long id) {
-        if(accountExists(id)){
+        if(!accountExists(id)){
             account.setId(id);
             repo.save(account);
             return ResponseEntity.ok().build();

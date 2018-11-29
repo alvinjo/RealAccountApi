@@ -5,8 +5,6 @@ import com.qa.account.accountapi.service.AccountService;
 import com.qa.account.accountapi.util.constants.Constants;
 import com.qa.account.persistence.domain.Account;
 import com.qa.account.persistence.domain.Prize;
-import com.qa.account.persistence.domain.sentAccount;
-import com.qa.account.persistence.domain.sentPrize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,9 +25,6 @@ public class AccountRest {
     
     @Autowired
     private RestTemplate restTemplate;
-    
-    @Autowired
-    private JmsTemplate jmsTemplate;
     
     @Value("${url.generator}")
     private String generatorURL;
@@ -65,27 +60,18 @@ public class AccountRest {
     
     @PostMapping(Constants.URL_CREATE_ACCOUNT)
     public Account createAccount(@RequestBody Account account) {
-    	String generatedNum = restTemplate.getForObject(generatorURL + accountNumGeneratorPath, String.class);
-    	Prize prizeWon = restTemplate.getForObject(prizeURL + determinePrizePath + generatedNum, Prize.class);
- 	
-    	account.setAccountNumber(generatedNum);
-    	account.setPrize(prizeWon);
-    	
-    	account = service.addAccount(account);
-    	
-    	sentPrize sentPrize = new sentPrize(account.getPrize().getId(), prizeWon.getPrizeAmount(), prizeWon.getTime());
-    	sentAccount sentAccount = new sentAccount(account.getId(), account.getFirstName(), account.getLastName(), account.getAccountNumber(), sentPrize);
-    	
-    	jmsTemplate.convertAndSend("AccountQueue", sentAccount);
-    	
-    	return account;
+        account = setAccountNumberAndPrize(account);
+    	return service.addAccount(account);
     }
 
-//    private List<Object> prizeAndAccount(Account account, Integer prizeWon){
-//        List<Object> prizeAndAccount = new ArrayList<>();
-//        prizeAndAccount.add(account);
-//        prizeAndAccount.add(prizeWon);
-//        return prizeAndAccount;
-//    }
+    private Account setAccountNumberAndPrize(Account account){
+        String generatedAccountNum = restTemplate.getForObject(generatorURL + accountNumGeneratorPath, String.class);
+        Prize prizeWon = restTemplate.getForObject(prizeURL + determinePrizePath + generatedAccountNum, Prize.class);
+
+        account.setAccountNumber(generatedAccountNum);
+        account.setPrize(prizeWon);
+
+        return account;
+    }
 
 }
