@@ -2,7 +2,6 @@ package com.qa.account.accountapi.rest;
 
 import com.qa.account.accountapi.service.AccountService;
 
-import com.qa.account.accountapi.util.constants.Constants;
 import com.qa.account.persistence.domain.Account;
 import com.qa.account.persistence.domain.Prize;
 
@@ -16,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping(Constants.URL_BASE)
+@RequestMapping("${path.base}")
 @RestController
 public class AccountRest {
 
@@ -25,6 +24,9 @@ public class AccountRest {
     
     @Autowired
     private RestTemplate restTemplate;
+    
+    @Autowired
+    private JmsTemplate jmsTemplate;
     
     @Value("${url.generator}")
     private String generatorURL;
@@ -38,29 +40,32 @@ public class AccountRest {
     @Value("${path.determinePrize}")
     private String determinePrizePath;
 
-    @GetMapping(Constants.URL_GET_ACCOUNTS)
+    @GetMapping("${path.getAccounts}")
     public List<Account> getAccounts() {
         return service.getAccounts();
     }
 
-    @GetMapping(Constants.URL_GET_ACCOUNT_BY_ID)
+    @GetMapping("${path.getAccountById}")
     public Account getAccount(@PathVariable Long id) {
         return service.getAccount(id);
     }
 
-    @DeleteMapping(Constants.URL_DELETE_ACCOUNT)
+    @DeleteMapping("${path.deleteAccount}")
     public ResponseEntity<Object> deleteAccount(@PathVariable Long id) {
         return service.deleteAccount(id);
     }
 
-    @PutMapping(Constants.URL_UPDATE_ACCOUNT)
+    @PutMapping("${path.updateAccount}")
     public ResponseEntity<Object> updateAccount(@RequestBody Account account, @PathVariable Long id) {
         return service.updateAccount(account, id);
     }
     
-    @PostMapping(Constants.URL_CREATE_ACCOUNT)
+    @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {
         account = setAccountNumberAndPrize(account);
+        
+        jmsTemplate.convertAndSend("AccountQueue", account);
+        
     	return service.addAccount(account);
     }
 

@@ -18,9 +18,6 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository repo;
 
-    @Autowired
-    private JmsTemplate jmsTemplate;
-
     @Override
     public List<Account> getAccounts() {
         return repo.findAll();
@@ -34,7 +31,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account addAccount(Account account) {
-        jmsTemplate.convertAndSend("AccountQueue", account);
         return repo.save(account);
     }
 
@@ -49,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public ResponseEntity<Object> updateAccount(Account account, Long id) {
-        if(!accountExists(id)){
+        if(accountExists(id)){
             account.setId(id);
             repo.save(account);
             return ResponseEntity.ok().build();

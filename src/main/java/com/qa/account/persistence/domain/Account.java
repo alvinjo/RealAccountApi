@@ -24,10 +24,11 @@ public class Account {
     public Account() {
     }
 
-    public Account(String firstName, String lastName, String accountNumber) {
+    public Account(Long accountId, String firstName, String lastName, String accountNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
+        this.accountId = accountId;
     }
 
     public Long getId() {
@@ -68,5 +69,9 @@ public class Account {
     
     public void setPrize(Prize prize) {
     	this.prize = prize;
+    }
+    
+    public String toString() {
+    	return this.accountId + this.firstName + this.lastName + this.accountNumber;
     }
 }

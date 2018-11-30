@@ -19,9 +19,10 @@ public class Prize {
 		
 	}
 	
-	public Prize(int prizeAmount, String time) {
+	public Prize(Long prizeId, int prizeAmount, String time) {
 		this.prizeAmount = prizeAmount;
 		this.time = time;
+		this.prizeId = prizeId;
 	}
 	
 	public Long getId() {
@@ -42,5 +43,9 @@ public class Prize {
 	
 	public void setTime(String time) {
 		this.time = time;
+	}
+	
+	public String toString() {
+		return this.prizeId + this.prizeAmount + this.time;
 	}
 }
