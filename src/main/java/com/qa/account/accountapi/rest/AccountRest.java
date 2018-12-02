@@ -1,9 +1,11 @@
 package com.qa.account.accountapi.rest;
 
+import com.qa.account.accountapi.persistence.domain.SentAccount;
+import com.qa.account.accountapi.persistence.domain.SentPrize;
 import com.qa.account.accountapi.service.AccountService;
 
-import com.qa.account.persistence.domain.Account;
-import com.qa.account.persistence.domain.Prize;
+import com.qa.account.accountapi.persistence.domain.Account;
+import com.qa.account.accountapi.persistence.domain.Prize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,9 +65,7 @@ public class AccountRest {
     @PostMapping("${path.createAccount}")
     public Account createAccount(@RequestBody Account account) {
         account = setAccountNumberAndPrize(account);
-        
-        jmsTemplate.convertAndSend("AccountQueue", account);
-        
+        sendToQueue(account);
     	return service.addAccount(account);
     }
 
@@ -75,8 +75,12 @@ public class AccountRest {
 
         account.setAccountNumber(generatedAccountNum);
         account.setPrize(prizeWon);
-
         return account;
+    }
+
+    private void sendToQueue(Account account){
+        SentAccount accountToStore =  new SentAccount(account);
+        jmsTemplate.convertAndSend("AccountQueue", accountToStore);
     }
 
 }

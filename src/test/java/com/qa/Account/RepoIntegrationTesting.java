@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.qa.account.accountapi.rest.AccountRest;
 import com.qa.account.accountapi.service.AccountService;
 import com.qa.account.accountapi.util.exceptions.AccountNotFoundException;
-import com.qa.account.persistence.domain.Account;
-import com.qa.account.persistence.domain.Prize;
+import com.qa.account.accountapi.persistence.domain.Account;
+import com.qa.account.accountapi.persistence.domain.Prize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

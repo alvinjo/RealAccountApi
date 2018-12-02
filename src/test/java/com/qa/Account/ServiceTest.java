@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import com.qa.account.accountapi.persistence.repository.AccountRepository;
 import com.qa.account.accountapi.service.AccountServiceImpl;
 import com.qa.account.accountapi.util.exceptions.AccountNotFoundException;
-import com.qa.account.persistence.domain.Account;
+import com.qa.account.accountapi.persistence.domain.Account;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceTest {

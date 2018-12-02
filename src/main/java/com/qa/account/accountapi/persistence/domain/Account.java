@@ -1,4 +1,4 @@
-package com.qa.account.persistence.domain;
+package com.qa.account.accountapi.persistence.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
