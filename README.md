@@ -189,7 +189,7 @@ This is a seperate service running on localhost:2701.
 
 # 4. I Don't Understand (FAQ)
 
-* Why is everything seperated? Why not just one application that does it all? Why are you making things difficult?
+1. Why is everything seperated? Why not just one application that does it all? Why are you making things difficult?
 > 
 > We are using a Micro-Service approach as opposed to a Monolithic one because we want things modular. 
 > 
@@ -202,7 +202,7 @@ This is a seperate service running on localhost:2701.
 > More on [Monolithic vs MS](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
 
 
-* Why doesn't AccountAPI just send data directly to JMS Consumer?
+2. Why doesn't AccountAPI just send data directly to JMS Consumer?
 
 > We want loosely coupled components! This goes back to the Monolithic vs MS argument.
 > 
@@ -210,11 +210,21 @@ This is a seperate service running on localhost:2701.
 > But with the Queue inbetween handling the communication, JMS Consumer can be swapped around. 
 > The queue will simply hold onto the data until a JMS Consumer is back and ready to take data.
 
+3. What is the difference between a JMS Consumer and JMS Listener?
+> They both mean the same thing
+> The act of listening and consuming both require input. 
+> In real life context, someone needs to speak for you to listen, and food must be present for you to consume.
+> They both take some sort of input
+> In programming context either term can be used to describe the process of dequeueing (taking data from the queue)
 
 
-* I still don't understand
+
+
+4. I still don't understand
 
 > Consult the [all knowing](https://google.com)
+
+
 
 
 # 5. How To Run
