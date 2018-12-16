@@ -189,7 +189,7 @@ This is a seperate service running on localhost:2701.
 
 # 4. I Don't Understand (FAQ)
 
-1. Why is everything seperated? Why not just one application that does it all? Why are you making things difficult?
+* Why is everything seperated? Why not just one application that does it all? Why are you making things difficult?
 
 We are using a Micro-Service approach as opposed to a Monolithic one because we want things modular. 
 
@@ -202,7 +202,7 @@ But if you have an Apple product then you have yourself a monolithic architectur
 More on [Monolithic vs MS](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
 
 
-2. Why doesn't AccountAPI just send data directly to JMS Consumer?
+* Why doesn't AccountAPI just send data directly to JMS Consumer?
 
 We want loosely coupled components! This goes back to the Monolithic vs MS argument.
 
@@ -212,9 +212,9 @@ The queue will simply hold onto the data until a JMS Consumer is back and ready 
 
 
 
-99. I still don't understand
+* I still don't understand
 
-Send your questions [this way](https://google.com)
+Consult the [all knowing](https://google.com)
 
 
 # 5. How To Run
