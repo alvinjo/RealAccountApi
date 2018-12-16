@@ -190,31 +190,31 @@ This is a seperate service running on localhost:2701.
 # 4. I Don't Understand (FAQ)
 
 * Why is everything seperated? Why not just one application that does it all? Why are you making things difficult?
-
-We are using a Micro-Service approach as opposed to a Monolithic one because we want things modular. 
-
-Modularity means it is easier to fix things if they are broken. It means you can swap parts in and out to improve the system.
-This kind of modularity can be seen when building a PC. 
-If you want to swap out the graphics card, you are able to do so. That graphics card sounds like a micro-service!
-
-But if you have an Apple product then you have yourself a monolithic architecture ~~and a bad one that is~~ 
-
-More on [Monolithic vs MS](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
+> 
+> We are using a Micro-Service approach as opposed to a Monolithic one because we want things modular. 
+> 
+> Modularity means it is easier to fix things if they are broken. It means you can swap parts in and out to improve the system.
+> This kind of modularity can be seen when building a PC. 
+> If you want to swap out the graphics card, you are able to do so. That graphics card sounds like a micro-service!
+> 
+> But if you have an Apple product then you have yourself a monolithic architecture ~~and a bad one that is~~ 
+> 
+> More on [Monolithic vs MS](https://articles.microservices.com/monolithic-vs-microservices-architecture-5c4848858f59)
 
 
 * Why doesn't AccountAPI just send data directly to JMS Consumer?
 
-We want loosely coupled components! This goes back to the Monolithic vs MS argument.
-
-If we wanted to swap out JMS Consumer for a different consumer then the application wouldn't work as it should.
-But with the Queue inbetween handling the communication, JMS Consumer can be swapped around. 
-The queue will simply hold onto the data until a JMS Consumer is back and ready to take data.
+> We want loosely coupled components! This goes back to the Monolithic vs MS argument.
+> 
+> If we wanted to swap out JMS Consumer for a different consumer then the application wouldn't work as it should.
+> But with the Queue inbetween handling the communication, JMS Consumer can be swapped around. 
+> The queue will simply hold onto the data until a JMS Consumer is back and ready to take data.
 
 
 
 * I still don't understand
 
-Consult the [all knowing](https://google.com)
+> Consult the [all knowing](https://google.com)
 
 
 # 5. How To Run
