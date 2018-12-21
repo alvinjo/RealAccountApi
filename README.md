@@ -183,7 +183,7 @@ This is a seperate service running on localhost:2701.
 ## Unit Testing
    * Unit testing involves breaking the program down into very small pieces that we can test. More about unit testing [here](http://softwaretestingfundamentals.com/unit-testing/)
    * For our unit tests we used **Mockito**.
-   * **Mockito** - We used mockito for our unit tests. Mockito is a library for effective unit testing. More about mockito [here](https://www.tutorialspoint.com/mockito/index.htm)
+   * **Mockito** - Mockito is a library for effective unit testing. More about mockito [here](https://www.tutorialspoint.com/mockito/index.htm)
 
 
 
@@ -234,6 +234,8 @@ This is a seperate service running on localhost:2701.
 * [Maven](https://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [Node.js](https://nodejs.org/en/download/)
+* [ActiveMQ](https://activemq.apache.org/getting-started.html)
+* [MongoDB](https://docs.mongodb.com/manual/installation/)
 
 ## Steps:
 1. Make a new directory to work inside
@@ -252,7 +254,11 @@ cd ..
 3. Run the .bat file you created
 4. Start the ActiveMQ service
 
+Do this by locating the directory where you have extracted the activemq files. Open command prompt and navigate to the 'bin' folder within the activemq files. Run the command 'activemq start'. The activemq process should start. You can view the queue on localhost:8161/admin/queues.jsp. The default username and password is 'admin'. 
+
 5. Start MongoDB
+
+Do this by first locating the directory where mongodb is installed. The path will look similar to this *'..\MongoDB\Server\4.0\bin\'*. Open command prompt, navigate to this directory and run the mongo.exe file by typing 'mongo'. Once you hit enter, the mongo service will be running.
 
 6. Create another .bat file with the contents:
 ```
