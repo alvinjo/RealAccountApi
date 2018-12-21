@@ -265,20 +265,16 @@ Do this by first locating the directory where mongodb is installed. The path wil
 cd RealAccountApi
 start mvn spring-boot:run
 
-cd ..
-cd RealAccountConsumer
+cd ../RealAccountConsumer
 start mvn spring-boot:run
 
-cd ..
-cd RealAccountPrizeApi
+cd ../RealAccountPrizeApi
 start mvn spring-boot:run
 
-cd ..
-cd RealAccountNumGenApi
+cd ../RealAccountNumGenApi
 start mvn spring-boot:run
 
-cd ..
-cd AccountFront
+cd ../AccountFront
 npm start
 ```
 7. Run the .bat file
