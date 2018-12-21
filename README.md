@@ -218,9 +218,12 @@ This is a seperate service running on localhost:2701.
 > In programming context either term can be used to describe the process of dequeueing (taking data from the queue)
 
 
+4. I run the command 'activemq start' but the service wont start, help?
+
+> Try running the same command with the activemq file in the 'win32' or 'win64' folder. 
 
 
-4. I still don't understand
+5. I still don't understand
 
 > Consult the [all knowing](https://google.com)
 
